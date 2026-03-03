@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Toy Assembly Memory Simulator</title>
+    <style>
+        #memory {
+            display: grid;
+            grid-template-columns: repeat(16, 30px);
+            grid-template-rows: repeat(16, 30px);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .cell {
+            width: 45px;
+            height: 45px;
+            border: 1px solid black;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+        }
+        .cell.pc {
+            background-color: yellow;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        #register-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .reg {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100px;
+            padding: 8px;
+            border: 2px solid black;
+            font-family: monospace;
+            font-size: 18px;
+            background-color: gray;
+        }
+        
+
+    </style>
+</head>
+
+<body>
+    
+
+    
+    <div class="container">
+        <div id="memory"></div>
+
+        <div id="register-panel">
+            <div class="reg"><span>R0</span><span id="r0">0</span></div>
+            <div class="reg"><span>R1</span><span id="r1">0</span></div>
+            <div class="reg"><span>R2</span><span id="r2">0</span></div>
+            <div class="reg"><span>R3</span><span id="r3">0</span></div>
+            <div class="reg"><span>RSP</span><span id="rsp">64</span></div>
+            <div class="reg"><span>PC</span><span id="pc">0</span></div>
+            <button onclick="run()">Run</button>
+            with
+            <div class="text"><input type="text" id="delay" value="0"></div>
+            seconds delay between instruction
+        </div>
+
+        <form action="upload_endpoint.php" method="POST" enctype="multipart/form-data">
+        <label for="file-upload"><h2>Choose a .binary file to upload:</h2></label>
+        <input type="file" id="uploadedFile" name="file" accept=".binary">
+        </form>
+        
+        
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
